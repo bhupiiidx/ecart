@@ -29,15 +29,20 @@ function Product() {
 
 	const Loading = () => <Skeleton height="300px"/>;
 
+	const filterProducts = category => {
+		let formatedData = data.filter(fil => fil.category === category)
+		setFilter(formatedData)
+	}
+
 	const ShowProducts = () => {
 		return (
 			<div>
 				<div className="buttons d-flex justify-content-center mb-5 pb-5">
-					<button className="btn btn-outline-dark me-2">All</button>
-					<button className="btn btn-outline-dark me-2">Men's Clothing</button>
-					<button className="btn btn-outline-dark me-2">Women's Clothing</button>
-					<button className="btn btn-outline-dark me-2">Jewelery</button>
-					<button className="btn btn-outline-dark me-2">Electronic</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>All</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("men's clothing")}>Men's Clothing</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("women's clothing")}>Women's Clothing</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("jewelery")}>Jewelery</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("electronic")}>Electronic</button>
 				</div>
 				<div className="row">
 					{filter.map((product) => (
