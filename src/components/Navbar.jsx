@@ -6,7 +6,7 @@ function Navbar() {
 			<nav className="navbar navbar-expand-lg navbar-light bg-light">
 				<div className="container-fluid">
 					<a href="/" className="navbar-brand fw-bold text-success fs-2">
-						EMART
+						ECART
 					</a>
 					<button
 						className="navbar-toggler"
