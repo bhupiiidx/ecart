@@ -1,13 +1,14 @@
 import React from 'react';
+import { NavLink, Routes, Route } from 'react-router-dom';
 
 function Navbar() {
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg navbar-light bg-light">
 				<div className="container-fluid">
-					<a href="/" className="navbar-brand fw-bold text-success fs-2">
+					<NavLink to="/" className="navbar-brand fw-bold text-success fs-2">
 						ECART
-					</a>
+					</NavLink>
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -22,51 +23,51 @@ function Navbar() {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mx-auto mb-2 mb-lg-0">
 							<li className="nav-item">
-								<a href="/" className="nav-link active" aria-current="page">
+								<NavLink to="/" className="nav-link">
 									Home
-								</a>
+								</NavLink>
 							</li>
 							<li className="nav-item">
-								<a href="/" className="nav-link">
+								<NavLink to="/products" className="nav-link">
 									Products
-								</a>
+								</NavLink>
 							</li>
 							<li className="nav-item">
-								<a href="/" className="nav-link">
+								<NavLink to="/about" className="nav-link">
 									About
-								</a>
+								</NavLink>
 							</li>
 							<li className="nav-item">
-								<a href="/" className="nav-link">
+								<NavLink to="/contact" className="nav-link">
 									Contact
-								</a>
+								</NavLink>
 							</li>
 						</ul>
 						<div className="d-flex">
-							<a
-								href="/"
+							<NavLink
+								to="/login"
 								className="btn btn-outline-dark d-flex align-items-center justify-content-between"
 								type="submit"
 							>
-								<i class="fa fa-user me-2" aria-hidden="true" />
+								<i className="fa fa-user me-2" aria-hidden="true" />
 								<span>Login</span>
-							</a>
-							<a
-								href="/"
+							</NavLink>
+							<NavLink
+								to="/register"
 								className="btn btn-outline-dark d-flex align-items-center justify-content-between mx-2"
 								type="submit"
 							>
-								<i class="fa fa-sign-in me-2" aria-hidden="true" />
+								<i className="fa fa-sign-in me-2" aria-hidden="true" />
 								<span>Register</span>
-							</a>
-							<a
-								href="/"
+							</NavLink>
+							<NavLink
+								to="/cart"
 								className="btn btn-outline-dark d-flex align-items-center justify-content-between"
 								type="submit"
 							>
-								<i class="fa fa-cart-plus me-2" aria-hidden="true" />
+								<i className="fa fa-cart-plus me-2" aria-hidden="true" />
 								<span>Cart (0)</span>
-							</a>
+							</NavLink>
 						</div>
 					</div>
 				</div>

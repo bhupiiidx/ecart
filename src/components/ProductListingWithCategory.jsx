@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton';
 
 function Product() {
 	const [ data, setData ] = useState([]);
@@ -9,7 +9,7 @@ function Product() {
 
 	useEffect(() => {
 		const getProducts = async () => {
-			setLoading(false);
+			setLoading(true);
 			const response = await fetch('https://fakestoreapi.com/products');
 			// .then((response) => console.log('response is =>', response))
 			// .catch((error) => console.log('error is =>', error));
@@ -27,36 +27,66 @@ function Product() {
 		getProducts();
 	}, []);
 
-	const Loading = () => <Skeleton height="300px"/>;
+	const Loading = () => {
+		return (
+			<div className="col-12">
+				<div className="row">
+					<div className="col-12 col-md-3">
+						<Skeleton height={300} />
+						<Skeleton count={4} />
+					</div>
+					<div className="col-12 col-md-3">
+						<Skeleton height={300} />
+						<Skeleton count={4} />
+					</div>
+					<div className="col-12 col-md-3">
+						<Skeleton height={300} />
+						<Skeleton count={4} />
+					</div>
+					<div className="col-12 col-md-3">
+						<Skeleton height={300} />
+						<Skeleton count={4} />
+					</div>
+				</div>
+			</div>
+		);
+	};
 
-	const filterProducts = category => {
-		let formatedData = data.filter(fil => fil.category === category)
-		setFilter(formatedData)
-	}
+	const filterProducts = (category) => {
+		let formatedData = data.filter((fil) => fil.category === category);
+		setFilter(formatedData);
+	};
 
 	const ShowProducts = () => {
 		return (
 			<div>
 				<div className="buttons d-flex justify-content-center mb-5 pb-5">
-					<button className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>All</button>
-					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("men's clothing")}>Men's Clothing</button>
-					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("women's clothing")}>Women's Clothing</button>
-					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("jewelery")}>Jewelery</button>
-					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("electronic")}>Electronic</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>
+						All
+					</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("men's clothing")}>
+						Men's Clothing
+					</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts("women's clothing")}>
+						Women's Clothing
+					</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts('jewelery')}>
+						Jewelery
+					</button>
+					<button className="btn btn-outline-dark me-2" onClick={() => filterProducts('electronic')}>
+						Electronic
+					</button>
 				</div>
 				<div className="row">
 					{filter.map((product) => (
 						<div className="col-12 col-md-3" key={product.id}>
-							<div class="card h-100 text-center p-4">
-								<img src={product.image} class="card-img-top" alt={product.title} height="250px"/>
-								<div class="card-body">
-									<h5 class="card-title mb-0">{product.title.substring(0,12)}...</h5>
-									<p class="card-text lead fw-bold">${product.price}</p>
-									<a href="/" className="btn btn-outline-dark m-2">
+							<div className="card h-100 text-center p-4">
+								<img src={product.image} className="card-img-top" alt={product.title} height="250px" />
+								<div className="card-body">
+									<h5 className="card-title mb-0">{product.title.substring(0, 12)}...</h5>
+									<p className="card-text lead fw-bold">${product.price}</p>
+									<a href={'/product/' + product.id} className="btn btn-outline-dark m-2">
 										Buy Now
-									</a>
-									<a href="/" className="btn btn-outline-dark m-2">
-										Add To Cart
 									</a>
 								</div>
 							</div>
